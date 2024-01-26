@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Custom Theme files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'pr/css/login.css' %}">
+    <!-- //Custom Theme files -->
+    <title>Vogue Stash</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'pr/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pr/css/style.css' %}" type="text/css">
+
+    <!-- alertifyjs  -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="{% static 'pr/img/mylogo.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="/shopp/">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'cart' %}">Shopping Cart</a></li>
+                                    <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                                    <li><a href="{% url 'checkout' %}">Check Out</a></li>
+                                    <li><a href="/about/">About Us</a></li>
+                                    <li><a href="/contact/">Contact</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <a href="#" class="search-switch"><img src="{% static 'pr/img/icon/search.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'pr/img/icon/heart.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'pr/img/icon/cart.png' %}" alt=""> <span>0</span></a>
+                        <div class="price">$0.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- Login section Begins -->
+    <body>
+        <div class="container-fluid">
+            <form method="POST" class="mx-auto">
+                {% csrf_token %}
+                <h4 class="text-center">Login</h4>
+                <div class="mb-3 mt-5">
+                  <label for="exampleInputEmail1" class="form-label">User Name</label>
+                  <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                  <div id="emailHelp" class="form-text mt-3">Forget password ?</div>
+                </div>
+              
+                <button type="submit" class="btn btn-primary mt-5">Login</button>
+              </form>
+        </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
+
+
+    <!-- Login section End -->
+    
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'pr/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'pr/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'pr/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'pr/js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'pr/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'pr/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'pr/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'pr/js/mixitup.min.js' %}"></script>
+    <script src="{% static 'pr/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'pr/js/main.js' %}"></script>
+
+
+    <!-- alertifyjs -->
+    <script crossorigin="anonymous" src="https://cdn.example.com/script.js"></script>
+
+    <script>
+        alertify.set('notifier','position', 'top-right');
+    </script>
+
+            {% for msg in messages %}
+                <script>
+                    alertify.success('{{ msg }}');
+                </script>
+            {% endfor %}
+    
+</body>
+
+</html>
