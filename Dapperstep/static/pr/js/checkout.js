@@ -27,7 +27,7 @@ $(document).ready(function () {
                 success: function (response) {
                     // console.log(response);
                     var options = {
-                        "key": "rzp_test_cD9WYLRSw0LY7M", 
+                        "key": "rzp_test_XDXhWvjlFrJ7eB", 
                         "amount": response.total_price * 100,
                         "currency": "USD",
                         "name": "Vogue Stash",
@@ -49,7 +49,7 @@ $(document).ready(function () {
                                 "payment_mode": "Paid by Razorpay",
                                 "payment_id": responseb.razorpay_payment_id,
                                 csrfmiddlewaretoken: token
-                             }
+                            }
                             $.ajax({
                                 method: "POST",
                                 url: "/placeorder",
@@ -76,7 +76,7 @@ $(document).ready(function () {
                 }
             });
 
-          }
+        }
         
         
        

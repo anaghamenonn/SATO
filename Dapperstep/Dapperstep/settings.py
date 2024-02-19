@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# RAZOR_KEY_ID="rzp_test_XDXhWvjlFrJ7eB"
+# RAZOR_KEY_SECRET="FOFZwXTmh2AOkF6MpQWzf8p9"

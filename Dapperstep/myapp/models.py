@@ -29,6 +29,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'category'
         verbose_name_plural = 'categories'
+    objects = models.Manager()
 
     def __str__(self):
         return self.name
@@ -118,7 +119,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-
-
-

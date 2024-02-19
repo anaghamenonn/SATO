@@ -1,13 +1,17 @@
+import random
+
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import auth
 from django.http import HttpResponse
 from django.http.response import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User, auth
-from django.contrib.auth import login, authenticate, logout 
-from django.db.models import Q
+from django.shortcuts import render, redirect
+
 from .models import *
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-import random
+
+
+# import razorpay
 
 
 # Create your views here.
@@ -327,6 +331,8 @@ def razorpaycheck(request):
     return JsonResponse({
         'total_price': total_price
     })
+
+
 
 def orders(request):
     return HttpResponse("My orders page") 

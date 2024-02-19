@@ -225,12 +225,10 @@
 <script src="{% static 'pr/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'pr/js/main.js' %}"></script>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>>
 
     
 <script src="{% static 'pr/js/jquery-3.7.1.min.js' %}"></script>
 <script src="{% static 'pr/js/custom.js' %}"></script>
-<script src="{% static 'pr/js/checkout.js' %}"></script>
 
 
 <!-- alertifyjs -->
@@ -240,13 +238,15 @@
     alertify.set('notifier','position', 'top-right');
 </script>
 
-        {% for msg in messages %}
-            <script>
-                alertify.success('{{ msg }}');
-            </script>
+{% for msg in messages %}
+<script>
+    alertify.success('{{ msg }}');
+    </script>
         {% endfor %}
-
-
+        
+        
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>>
+<script src="{% static 'pr/js/checkout.js' %}"></script>
 
 </body>
 

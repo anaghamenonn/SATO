@@ -29,6 +29,7 @@
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
 
 
 
@@ -195,7 +196,7 @@
                                     <input type="hidden" value="COD" name="payment_mode">
                                     <button type="submit" class="site-btn"> COD | PLACE ORDER</button>
                                     <button type="button" class=" paywithRazorpay site-btn"> Pay with Razorpay</button>
-                                    <div id="paypal-button-container" class="mt-2"></div>
+                                    <!-- <div id="paypal-button-container" class="mt-2"></div> -->
 
 
 
@@ -298,17 +299,14 @@
 <script src="{% static 'pr/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'pr/js/main.js' %}"></script>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AYG8kmIlsSM_DEE6hgIxSe3aChz5j1lRhPipgxxDEuV3tTZ9GR-TtTveavO6i5jVmTNKlTaCBGMT0Tem&currency=USD"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://www.paypal.com/sdk/js?client-id=AYG8kmIlsSM_DEE6hgIxSe3aChz5j1lRhPipgxxDEuV3tTZ9GR-TtTveavO6i5jVmTNKlTaCBGMT0Tem&currency=USD"></script> -->
 
 
 
 <script src="{% static 'pr/js/jquery-3.7.1.min.js' %}"></script>
 <script src="{% static 'pr/js/custom.js' %}"></script>
-document.write('<script src="{% static 'pr/js/checkout.js' %}"></script>');
-<script src="{% static 'pr/js/checkout.js' %}"></script>
 
 
 
@@ -320,12 +318,14 @@ document.write('<script src="{% static 'pr/js/checkout.js' %}"></script>');
     alertify.set('notifier','position', 'top-right');
 </script>
 
-        {% for msg in messages %}
-            <script>
-                alertify.success('{{ msg }}');
-            </script>
+{% for msg in messages %}
+<script>
+    alertify.success('{{ msg }}');
+    </script>
         {% endfor %}
         
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{% static 'pr/js/checkout.js' %}"></script>
 
 
 </body>

@@ -141,3 +141,14 @@ $(document).ready(function () {
     });
 
 });
+
+
+$.ajax({
+    method : "POST",
+    url: "url",
+    data: "data",
+    dataType: "dataType",
+    success: function (response) {
+        
+    }
+});

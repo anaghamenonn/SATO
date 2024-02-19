@@ -1,11 +1,11 @@
-"""Dapperstep URL Configuration
+"""Dapper step URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+    2. Add a URL to urlpatterns:  path('', views. home, name='home')
 Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
@@ -15,10 +15,9 @@ Including another URLconf
 """
 
 
-from . import views
-from django.contrib import admin
 from django.urls import path
-from django.contrib.auth import views as auth_views
+
+from . import views
 
 urlpatterns = [
     path('', views.index,name='home'),
@@ -48,7 +47,9 @@ urlpatterns = [
     path('placeorder', views.placeorder, name="placeorder"),
 
     path('proceed-to-pay', views.razorpaycheck),
-    path('my-orders', views.orders)
+    path('orders/',views.orders,name='orders'),
+   
+
 
 
 ]
