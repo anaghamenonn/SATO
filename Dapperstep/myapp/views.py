@@ -5,12 +5,9 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth import login, authenticate, logout 
 from django.db.models import Q
 from .models import *
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import random
-import razorpay
 
 
 # Create your views here.
