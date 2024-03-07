@@ -31,8 +31,6 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
-
-
 </head>
 
 <body>
@@ -75,6 +73,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
@@ -90,6 +89,7 @@
                     <div class="breadcrumb__links">
                         <a href="{% url 'home' %}"> Home </a>
                         <a href="{% url 'checkout' %}"> Checkout </a>
+                        <a href="{% url 'orders' %}">My Orders </a>
                     </div>
                 </div>
             </div>
@@ -98,118 +98,55 @@
 </section>
 <!-- Breadcrumb Section End -->
 
+<!-- orders section starts -->
 
-    <!-- Checkout Section Begin -->
-    <section class="checkout spad">
-        <div class="py-">
-            <div class="container">
-                <div class="checkout__form">
-                    <form action="{% url 'placeorder' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-lg-6 col-md-4">
-                                <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
-                                here</a> to enter your code</h6>
-                                <h6 class="checkout__title">Billing Details</h6>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>First Name<span>*</span></p>
-                                            <input type="text" required value="{{ userprofile.fname }}" name="fname">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Last Name<span>*</span></p>
-                                            <input type="text" required value="{{ userprofile.lname }}" name="lname">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="checkout__input">
-                                    <p>Country<span>*</span></p>
-                                    <input type="text" required value="{{ userprofile.country }}" name="country">
-                                </div>
-                                <div class="checkout__input">
-                                    <p>Address<span>*</span></p>
-                                    <input type="text" required value="{{ userprofile.address }}" name="address">
-                                </div>
-                                <div class="checkout__input">
-                                    <p>City<span>*</span></p>
-                                    <input type="text" required value="{{ userprofile.city }}" name="city">
-                                </div>
-                                <div class="checkout__input">
-                                    <p>State<span>*</span></p>
-                                    <input type="text" required value="{{ userprofile.state }}" name="state">
-                                </div>
-                                <div class="checkout__input">
-                                    <p>Pincode<span>*</span></p>
-                                    <input type="text" required value="{{ userprofile.pincode }}" name="pincode">
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Phone<span>*</span></p>
-                                            <input type="text" required value="{{ userprofile.phone }}" name="phone">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Email<span>*</span></p>
-                                            <input type="text" required value="{{ userprofile.email }}" name="email">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-8">
-                                <div class="checkout__order">
-                                    <h4 class="order__title">Your order</h4>
-                                        {% if cartitems %}
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th> Product </th>
-                                                        <th> Quantity </th>
-                                                        <th> Price </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for item in cartitems %}
-                                                        <tr>
-                                                            <td>
-                                                                <img src="{{ item.product.img.url }}" height="50px" width="50px" class="me-4" alt="image">
-                                                                {{ item.product.name }} 
-                                                            </td>
-                                                            <td> {{ item.product_qty }} </td>
-                                                            <td>${{ item.product.price | stringformat:'d' }} </td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                            <ul class="checkout__total__all">
-                                                <li> Subtotal <span> ${{ total_price | stringformat:'d' }} </span></li>
-                                                <li> Total <span> ${{ total_price | stringformat:'d' }} </span></li>
-                                            </ul>
-                                        {% else %}
-                                            <h4>Your cart is empty</h4>
-                                        {% endif%}                                    
-                                    <input type="hidden" value="COD" name="payment_mode">
-                                    <button type="submit" class="site-btn"> COD | PLACE ORDER</button>
-                                    <div id="paypal-button-container" class="mt-2"></div>
+<div class="container my-3">
+    <div class="row">
+        {% csrf_token %}
 
+        <div class="col-md-10">
+            <div class="card shadow">
+            <div class="card-header">
+                <h3> My Orders </h3>
 
-
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+            </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Order Date</th>
+                                <th>Tracking Number</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in orders %}
+                               <tr>
+                                   <td> {{ item.created_at }} </td>
+                                   <td> {{ item.tracking_no }} </td>
+                                   <td> {{ item.total_price }} </td>
+                                   <td> {{ item.status }} </td>
+                                   <td>
+                                       <a href="{% url 'orderview' item.tracking_no %}" class="primary-btn"> View </a>
+                                   </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Checkout Section End -->
+    </div>
+</div>
 
-  <!-- Footer Section Begin -->
-  <footer class="footer">
+
+
+<!-- orders section end -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -297,12 +234,13 @@
 <script src="{% static 'pr/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'pr/js/main.js' %}"></script>
 
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 
 <script src="{% static 'pr/js/jquery-3.7.1.min.js' %}"></script>
 <script src="{% static 'pr/js/custom.js' %}"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
@@ -324,29 +262,6 @@
    }
   
 </script>
-<!-- <script src="https://www.paypal.com/sdk/js?client-id=AYG8kmIlsSM_DEE6hgIxSe3aChz5j1lRhPipgxxDEuV3tTZ9GR-TtTveavO6i5jVmTNKlTaCBGMT0Tem&currency=USD"></script>
-
-
-<script>
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value:"{{ total_price | stringformat:'d' }}"
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(orderData) {
-                // console.log('Capture Result', orderData, JSON.stringify(orderData, null, 2));
-                // var transaction = orderData.purchase_units[0].payments.captures[0];
-                // alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all avilable details');
-            });
-        }
-    }).render('#paypal-button-container')
-</script> -->
 
 
 <!-- alertifyjs -->
@@ -361,8 +276,6 @@
     alertify.success('{{ msg }}');
     </script>
         {% endfor %}
-        
-
 
 
 </body>

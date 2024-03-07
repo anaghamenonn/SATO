@@ -18,7 +18,6 @@ Including another URLconf
 from django.urls import path
 
 from . import views
-
 urlpatterns = [
     path('', views.index,name='home'),
 
@@ -46,8 +45,10 @@ urlpatterns = [
     path('checkout', views.checkout, name='checkout'),
     path('placeorder', views.placeorder, name="placeorder"),
 
-    path('proceed-to-pay', views.razorpaycheck),
     path('orders/',views.orders,name='orders'),
+    path('view-order/<str:t_no>', views.orderview, name="orderview"),
+
+    path('product-list', views.productlistAjax, name='productlist'),
    
 
 

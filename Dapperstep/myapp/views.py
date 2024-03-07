@@ -290,7 +290,7 @@ def placeorder(request):
         neworder.total_price = cart_total_price
         trackno = 'anagha'+str(random.randint(1111111,9999999))
         while Order.objects.filter(tracking_no=trackno) is None:
-            trackno = 'anagha'+str(random.randint(1111111,9999999))
+            trackno = 'anagha'+ str(random.randint(1111111,9999999))
 
         neworder.tracking_no = trackno
         neworder.save()
@@ -311,28 +311,25 @@ def placeorder(request):
 
         #To clear user's Cart
         Cart.objects.filter(user=request.user).delete()
-
-
-        payMode = request.POST.get('payment_mode')
-        if(payMode == "Paid by Razorpay"):
-            return JsonResponse({'status':"Your order has been placed successfully"})
-        else:
-            messages.success(request, "Your order has been placed successfully")
+        
+        messages.success(request, "Your order has been placed successfully")
     return redirect('home')
-
-
-@login_required(login_url='login')
-def razorpaycheck(request):
-    cart = Cart.objects.filter(user=request.user)
-    total_price = 0
-    for item in cart:
-        total_price = total_price + item.product.price * item.product_qty
-
-    return JsonResponse({
-        'total_price': total_price
-    })
 
 
 
 def orders(request):
-    return HttpResponse("My orders page") 
+    orders = Order.objects.filter(user=request.user)
+    context = {'orders':orders}
+    return render(request, 'myorders.html', context)
+
+def orderview(request, t_no):
+    order = Order.objects.filter(tracking_no=t_no).filter(user=request.user).first()
+    orderitems = OrderItem.objects.filter(order=order)
+    context = {'order':order, 'orderitems':orderitems}
+    return render(request, 'orderview.html', context)
+
+def productlistAjax(request):
+    products = Product.objects.filter(status=0).values_list('name', flat=True)
+    productsList = list(products)
+
+    return JsonResponse(productsList, safe=False)

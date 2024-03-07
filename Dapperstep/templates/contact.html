@@ -66,10 +66,8 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="{% static 'pr/img/icon/search.png' %}" alt=""></a>
-                        <a href="#"><img src="{% static 'pr/img/icon/heart.png' %}" alt=""></a>
-                        <a href="#"><img src="{% static 'pr/img/icon/cart.png' %}" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="#" class="search-switch" id="searchproducts"><img src="{% static 'pr/img/icon/search.png' %}" alt=""></a>
+                        <a href="{% url 'wishlist' %}"><img src="{% static 'pr/img/icon/heart.png' %}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -214,6 +212,27 @@
     <script src="{% static 'pr/js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'pr/js/main.js' %}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        var availableTags = [];
+   
+       $.ajax({
+           method: "GET",
+           url: "/product-list",
+           success: function (response) {
+               startAutocomplete(response);
+           }
+       });
+   
+       function startAutocomplete(availableTags)
+       {
+           $( "#searchproducts" ).autocomplete({
+               source: availableTags
+           });
+       }
+      
+   </script>
     <!-- alertifyjs -->
     <script crossorigin="anonymous" src="https://cdn.example.com/script.js"></script>
 
