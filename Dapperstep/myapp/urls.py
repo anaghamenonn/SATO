@@ -44,6 +44,7 @@ urlpatterns = [
 
     path('checkout', views.checkout, name='checkout'),
     path('placeorder', views.placeorder, name="placeorder"),
+    path('proceed-to-pay', views.razorpaycheck, name="razorpaycheck"),
 
     path('orders/',views.orders,name='orders'),
     path('view-order/<str:t_no>', views.orderview, name="orderview"),

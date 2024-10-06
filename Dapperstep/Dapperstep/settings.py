@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'Dapperstep.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vogue_stash',
+        'NAME': 'dapperstep',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
@@ -143,3 +144,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # RAZOR_KEY_ID="rzp_test_XDXhWvjlFrJ7eB"
 # RAZOR_KEY_SECRET="FOFZwXTmh2AOkF6MpQWzf8p9"
+
+JAZZMIN_SETTINGS = {
+    "site_title": "SATO",
+    "site_header": "SATO",
+}

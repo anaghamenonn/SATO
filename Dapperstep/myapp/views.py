@@ -11,11 +11,6 @@ from django.shortcuts import render, redirect
 from .models import *
 
 
-# import razorpay
-
-
-# Create your views here.
-
 def index(request):
     return render(request,'index.html')
 
@@ -313,9 +308,21 @@ def placeorder(request):
         Cart.objects.filter(user=request.user).delete()
         
         messages.success(request, "Your order has been placed successfully")
+        payMode = request.POST.get('payment_mode')
+        if (payMode == "Paid by Razorpay"):
+            return JsonResponse({'status':"Your order has been placed successfully"})
+
     return redirect('home')
 
-
+@login_required(login_url='login')
+def razorpaycheck(request):
+    cart = Cart.objects.filter(user=request.user)
+    total_price = 0
+    for item in cart:
+        total_price = total_price + item.product.price * item.product_qty
+    return JsonResponse({
+        'total_price': total_price
+    })
 
 def orders(request):
     orders = Order.objects.filter(user=request.user)

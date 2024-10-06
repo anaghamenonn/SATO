@@ -8,7 +8,7 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vogue Stash</title>
+    <title>SATO</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="{% static 'pr/img/mylogo.png' %}" alt=""></a>
+                        <a href="./index.html"><img src="{% static 'pr/img/logo.png' %}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -109,14 +109,14 @@
             <hr>
             <div class="row">
                 {% for item in category %}
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <div class="card mb-1 mt-5">
                             <a href="{% url 'collectionsview' item.slug %}">
                                 <div class="card-body">
                                     <div class="category-image">
-                                        <img src="{{item.image.url}}" alt="category image" class="w-100">
+                                        <img src="{{item.image.url}}" alt="category image" class="w-100 " style="padding-left: 1.5rem;">
                                     </div>
-                                    <h4 class="text-center"> {{ item.name }} </h4>
+                                    <h4 class="text-center" style="padding-top: 2rem; padding-right: 1.25rem; font-size: medium;"> {{ item.name }} </h4>
                                 </div>
                             </a>
                         </div>
