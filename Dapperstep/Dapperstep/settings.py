@@ -27,7 +27,8 @@ SECRET_KEY = '4ohy$_5%8k8yg3t9-7r+0jaj32=(p#dj81)n$2%e+8ptmb4u-l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = FALSE
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app', 'Dapperstep.vercel.app', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
